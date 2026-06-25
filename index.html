@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Máy Quét Đơn Hàng - Tài Xế</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0A0A0A;
+      color: #FFD700;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #CCCCCC;
+    }
+    .scanner {
+      flex: 1;
+      border: 8px solid #FFD700;
+      border-radius: 30px;
+      background: #1a1a1a;
+      position: relative;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .scanner::before {
+      content: "📷 KHUNG QUÉT MÃ VẠCH";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700;
+      border: 4px dashed #FFD700;
+      padding: 40px 60px;
+      border-radius: 20px;
+    }
+    .btn {
+      font-size: 32px;
+      font-weight: bold;
+      padding: 35px;
+      margin: 15px 10px;
+      border-radius: 25px;
+      border: none;
+      width: 90%;
+      cursor: pointer;
+    }
+    .btn-scan {
+      background-color: #FFD700;
+      color: black;
+    }
+    .btn-complete {
+      background-color: #22C55E;
+      color: black;
+    }
+    .status {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #22C55E;
+    }
+  </style>
+</head>
+<body>
+  <h1>MÁY QUÉT ĐƠN HÀNG</h1>
+  <p>Đưa mã vạch vào giữa màn hình</p>
+
+  <div class="scanner" id="scanner">
+    <!-- Có thể thay bằng ảnh hoặc canvas sau -->
+  </div>
+
+  <div>
+    <button class="btn btn-scan" onclick="quétLại()">📸 QUÉT LẠI</button>
+    <button class="btn btn-complete" onclick="hoanThanh()">✅ HOÀN THÀNH CHUYẾN</button>
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <script>
+    function quétLại() {
+      document.getElementById("status").innerHTML = "📸 Đang quét lại...";
+      setTimeout(() => {
+        alert("✅ Đã quét thành công!\nMã đơn hàng: DH-20250625-7842");
+        document.getElementById("status").innerHTML = "✅ Sẵn sàng quét đơn tiếp theo";
+      }, 800);
+    }
+
+    function hoanThanh() {
+      alert("🎉 Chuyến hàng đã hoàn thành!\nChúc chú nghỉ ngơi an toàn.");
+      document.getElementById("status").innerHTML = "✅ Chuyến hàng hoàn tất";
+    }
+
+    // Tự động nói khi mở (demo)
+    window.onload = () => {
+      document.getElementById("status").innerHTML = "Ứng dụng sẵn sàng - Chú đưa mã vào khung";
+    };
+  </script>
+</body>
+</html>
